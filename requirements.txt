@@ -1,0 +1,10 @@
+# HIT140 Assessment 3 — Objective 2
+# Tested with conda env "test06" (Python 3.10)
+pandas
+numpy
+scipy
+scikit-learn
+statsmodels
+matplotlib
+seaborn
+jupyter
