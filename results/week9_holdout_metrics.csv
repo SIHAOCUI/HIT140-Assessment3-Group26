@@ -1,0 +1,7 @@
+model,k,predictor,MAE,MSE,RMSE,Normalised RMSE,R2
+LR2.1 (all 8 variables),8,linear regression,1.2051,2.2494,1.4998,0.15,0.4165
+LR2.1 (all 8 variables),8,training-set mean,1.6443,3.8705,1.9674,0.1967,-0.0041
+LR2.2 (all 8 variables),8,linear regression,0.9234,1.6564,1.287,0.1839,0.1746
+LR2.2 (all 8 variables),8,training-set mean,1.07,2.0111,1.4181,0.2026,-0.0021
+LR2.2 (6-variable subset),6,linear regression,0.9177,1.6374,1.2796,0.1828,0.1841
+LR2.2 (6-variable subset),6,training-set mean,1.07,2.0111,1.4181,0.2026,-0.0021
