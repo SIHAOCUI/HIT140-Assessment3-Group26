@@ -1,0 +1,9 @@
+model,MAE,MSE,RMSE,Normalised RMSE,R2
+Training-set mean (naive baseline),1.07,2.0111,1.4181,0.2026,-0.0021
+Linear regression,0.9234,1.6564,1.287,0.1839,0.1746
+Ridge,0.9222,1.6527,1.2856,0.1837,0.1765
+Lasso,0.9222,1.6146,1.2707,0.1815,0.1954
+Elastic net,0.9142,1.6134,1.2702,0.1815,0.196
+Polynomial (degree 2),1.0082,1.8274,1.3518,0.1931,0.0894
+Random forest,1.0025,1.8518,1.3608,0.1944,0.0772
+Gradient boosting,1.0548,2.2436,1.4979,0.214,-0.118
