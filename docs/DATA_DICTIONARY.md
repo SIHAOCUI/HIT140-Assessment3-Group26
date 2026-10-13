@@ -45,6 +45,13 @@ Overlap between the two models (by concept): FIFA rank, squad value, host-at-hom
 
 ## Caveats to resolve with the group
 1. No Elo: complete Elo tables I could find were updated after the tournament (would leak results). If someone has a pre-11-June Elo table for all 48 teams, swap it in.
-2. Squad values: one source dates the valuation 15 Jul 2026, another June 2026 (identical numbers). Confirm on Transfermarkt that these are the pre-tournament values.
+2. ~~Squad values: one source dates the valuation 15 Jul 2026, another June 2026 (identical numbers).~~
+   **Resolved 13 Oct 2026 (Sihao).** Our figures match Everything Edinburgh (published 18 Jun 2026,
+   sourced "Transfermarkt via PlanetFootball, June 2026") digit for digit for all 48 teams. The
+   PlanetFootball page is dated 15 Jul 2026 but carries the identical numbers, so 15 July is the article
+   date, not the valuation date. The figures did not move between 18 June and 15 July, a window covering
+   almost the entire tournament, so they cannot have absorbed tournament performance. Cross-check: the
+   11 June FIFA ranking explains tournament scoring better than squad value (r = -0.81 vs +0.75), the
+   reverse of what a mid-tournament revision would produce. Treated as a pre-tournament snapshot.
 3. Variable choice is a proposal; Roles 2/3 should confirm on 8 Oct. `candidate_features_*.csv` hold every engineered column for swapping.
 4. `log_rank` and `log_value` correlate ~0.8 and `ppg_diff`/`gd_pg_diff` ~0.82 – check VIF in the models.
