@@ -52,10 +52,10 @@ def figure_form():
     cols_s = [cols[i] for i in order]
     r_s = [r[i] for i in order]
 
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(11.6, 3.7),
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(11.6, 4.9),
                                    gridspec_kw={"width_ratios": [1.25, 1]})
 
-    ax1.barh(range(len(cols_s)), r_s, color=[kind[c] for c in cols_s], height=0.68)
+    ax1.barh(range(len(cols_s)), r_s, color=[kind[c] for c in cols_s], height=0.62)
     ax1.set_yticks(range(len(cols_s)))
     ax1.set_yticklabels(cols_s, fontsize=11)
     ax1.axvline(0, color="#333333", lw=0.9)
@@ -94,7 +94,7 @@ def figure_form():
                   fontsize=12.5, loc="left", pad=8)
     ax2.spines[["top", "right"]].set_visible(False)
     ax2.tick_params(labelsize=10.5)
-    ax2.text(0.79, 1.55, "filled  =  raw correlation\nopen  =  partial, given strength",
+    ax2.text(0.79, 1.50, "filled  =  raw correlation\nopen  =  partial, given strength",
              fontsize=9.5, ha="right", va="center", color="#555555")
 
     fig.tight_layout(pad=1.1)
@@ -127,13 +127,13 @@ def figure_models():
         names.append(n)
         rmses.append(math.sqrt(metrics.mean_squared_error(yte, m.predict(xte))))
 
-    fig, ax = plt.subplots(figsize=(11.6, 3.3))
+    fig, ax = plt.subplots(figsize=(11.6, 4.7))
     colours = []
     for n, v in zip(names, rmses):
         if v > base:            colours.append("#c00000")
         elif n == "Linear regression": colours.append(STRENGTH)
         else:                   colours.append("#7f9fc4")
-    ax.barh(range(len(names)), rmses, color=colours, height=0.66)
+    ax.barh(range(len(names)), rmses, color=colours, height=0.60)
     ax.set_yticks(range(len(names)))
     ax.set_yticklabels(names, fontsize=11.5)
     ax.axvline(base, color="#c00000", lw=1.7, ls="--")
