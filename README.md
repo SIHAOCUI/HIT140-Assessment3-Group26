@@ -89,4 +89,4 @@ complete without any imputation or dropped rows.
 
 ## Still to add
 
-- [ ] Final 4-page report in `report/` (Sihao)
+- [ ] The working notebook behind the LR2.2 hold-out figures (Luke) — issue #12
