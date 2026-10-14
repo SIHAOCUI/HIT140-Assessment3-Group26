@@ -30,7 +30,8 @@ Goals are counted **after extra time, excluding penalty shoot-outs**.
 ```
 src/build_datasets.py     Builds both datasets from the raw inputs. One script, one command.
 data/                     The two modelling datasets plus match metadata.
-notebooks/                One notebook per model.
+notebooks/                One notebook per model, plus the Week 9 hold-out
+                          evaluation for LR2.2.
 figures/lr21, figures/lr22   Every figure produced by the notebooks.
 docs/                     Data dictionary and the two report sections.
 report/                   Final 4-page group report.
@@ -86,7 +87,3 @@ complete without any imputation or dropped rows.
 - `docs/REVIEW_LOG.md` — what was reviewed, what was found, and how it was resolved
 - `docs/DATA_DICTIONARY.md` — variable definitions, sources and pre-match integrity
 - Issue board — tasks, owners and completion notes
-
-## Still to add
-
-- [ ] The working notebook behind the LR2.2 hold-out figures (Luke) — issue #12
