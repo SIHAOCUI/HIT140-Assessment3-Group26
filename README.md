@@ -80,6 +80,13 @@ priors of 1.3 goals scored/conceded and 1.0 points per game — so every team st
 first match at the prior instead of a missing value. This is why all 104 and 208 rows are
 complete without any imputation or dropped rows.
 
+## Project documentation
+
+- `CONTRIBUTIONS.md` — who produced what, and the project timeline
+- `docs/REVIEW_LOG.md` — what was reviewed, what was found, and how it was resolved
+- `docs/DATA_DICTIONARY.md` — variable definitions, sources and pre-match integrity
+- Issue board — tasks, owners and completion notes
+
 ## Still to add
 
 - [ ] `data/raw/worldcup.json` and `data/raw/team_inputs.csv` (Abel)
