@@ -22,7 +22,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression, Ridge, Lasso, ElasticNet
 from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
-from sklearn.preprocessing import PolynomialFeatures, StandardScaler
+from sklearn.preprocessing import PolynomialFeatures, StandardScaler, PowerTransformer
 from sklearn.pipeline import make_pipeline
 from sklearn import metrics
 
@@ -43,6 +43,10 @@ MODELS = {
         PolynomialFeatures(2, include_bias=False), StandardScaler(), Ridge(alpha=1.0)),
     "Random forest": RandomForestRegressor(n_estimators=400, random_state=RANDOM_STATE),
     "Gradient boosting": GradientBoostingRegressor(random_state=RANDOM_STATE),
+    # Week 9 optimisation tips 3 and 4, applied to the linear model
+    "Linear regression, z-score scaled": make_pipeline(StandardScaler(), LinearRegression()),
+    "Linear regression, Yeo-Johnson": make_pipeline(
+        PowerTransformer(method="yeo-johnson"), LinearRegression()),
 }
 
 

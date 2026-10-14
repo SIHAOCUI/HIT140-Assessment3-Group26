@@ -7,3 +7,5 @@ Elastic net,0.9142,1.6134,1.2702,0.1815,0.196
 Polynomial (degree 2),1.0082,1.8274,1.3518,0.1931,0.0894
 Random forest,1.0025,1.8518,1.3608,0.1944,0.0772
 Gradient boosting,1.0548,2.2436,1.4979,0.214,-0.118
+"Linear regression, z-score scaled",0.9234,1.6564,1.287,0.1839,0.1746
+"Linear regression, Yeo-Johnson",0.9185,1.5682,1.2523,0.1789,0.2186
