@@ -89,6 +89,4 @@ complete without any imputation or dropped rows.
 
 ## Still to add
 
-- [ ] `data/raw/worldcup.json` and `data/raw/team_inputs.csv` (Abel)
-- [ ] `candidate_features_match_level.csv`, `candidate_features_team_match.csv` (Abel)
 - [ ] Final 4-page report in `report/` (Sihao)
