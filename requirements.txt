@@ -1,9 +1,9 @@
 # HIT140 Assessment 3 — Objective 2
-# Tested with conda env "test06" (Python 3.10)
+# Tested on Python 3.10 with numpy 2.2, pandas 2.3, scikit-learn 1.7, statsmodels 0.15
 pandas
 numpy
 scipy
-scikit-learn
+scikit-learn>=1.3
 statsmodels
 matplotlib
 seaborn

@@ -32,7 +32,9 @@ src/build_datasets.py     Builds both datasets from the raw inputs. One script, 
 data/                     The two modelling datasets plus match metadata.
 notebooks/                One notebook per model, plus the Week 9 hold-out
                           evaluation for LR2.2.
-figures/lr21, figures/lr22   Every figure produced by the notebooks.
+figures/lr21/             Every figure produced by the LR2.1 notebook.
+figures/lr22/             Report Figure 2 (produced by the LR2.2 notebook) and the
+                          exploratory LR2.2 figures.
 docs/                     Data dictionary and the two report sections.
 report/                   Final 4-page group report.
 ```
@@ -51,6 +53,16 @@ plus `candidate_features_match_level.csv` and `candidate_features_team_match.csv
 The script asserts its own output: row counts, exactly eight explanatory variables per
 model, no missing values, concept-level overlap ≤ 4, and that the goal totals match the
 source results.
+
+## Reproducing the analysis
+
+```bash
+python src/evaluate_week9.py        # Week 9 hold-out metrics for both models
+python src/compare_models_lr22.py   # LR2.2 correlations and competing algorithms
+python src/make_report_figures.py   # report Figures 3 and 4
+```
+
+The notebooks run from either the repository root or `notebooks/`.
 
 ## Data sources
 
