@@ -1,0 +1,9 @@
+model,cv_rmse,cv_rmse_se
+Elastic net,1.1839,0.0141
+Lasso,1.1865,0.0143
+Ridge,1.1867,0.0138
+Linear regression,1.1872,0.0138
+Polynomial (degree 2),1.2333,0.0137
+Random forest,1.2685,0.0147
+Gradient boosting,1.3358,0.015
+Training-set mean (naive baseline),1.3709,0.0153

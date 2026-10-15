@@ -9,17 +9,21 @@ LR2.2 notebook did not include:
   2. A comparison of linear regression against competing regression algorithms
      (regularised linear, polynomial, and tree ensembles), scored on the same
      80/20 holdout used in evaluate_week9.py.
+  3. The same comparison under repeated 10-fold cross-validation (30 repeats),
+     so the ranking does not rest on a single 42-row test set.
 
     python src/compare_models_lr22.py
 
-Writes results/lr22_eda_correlations.csv and results/lr22_competing_models.csv.
+Writes results/lr22_eda_correlations.csv, results/lr22_competing_models.csv and
+results/lr22_competing_models_cv.csv.
 """
 import math
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
-from sklearn.model_selection import train_test_split
+from sklearn.base import clone
+from sklearn.model_selection import RepeatedKFold, train_test_split
 from sklearn.linear_model import LinearRegression, Ridge, Lasso, ElasticNet
 from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
 from sklearn.preprocessing import PolynomialFeatures, StandardScaler, PowerTransformer
@@ -94,7 +98,32 @@ def main():
     print(f"{'model':<36}{'MAE':>8}{'RMSE':>8}{'NRMSE':>8}{'R2':>8}")
     for _, r in table.iterrows():
         print(f"{r.model:<36}{r.MAE:>8.3f}{r.RMSE:>8.3f}{r['Normalised RMSE']:>8.3f}{r.R2:>8.3f}")
-    print(f"\nwritten: results/lr22_eda_correlations.csv, results/lr22_competing_models.csv")
+
+    # ---- 3. The same competitors under repeated 10-fold cross-validation
+    competitors = ["Linear regression", "Ridge", "Lasso", "Elastic net",
+                   "Polynomial (degree 2)", "Random forest", "Gradient boosting"]
+    folds = RepeatedKFold(n_splits=10, n_repeats=30, random_state=RANDOM_STATE)
+    fold_rmse = {name: [] for name in ["Training-set mean (naive baseline)"] + competitors}
+    for train_idx, test_idx in folds.split(x):
+        y_fold = y[test_idx]
+        fold_rmse["Training-set mean (naive baseline)"].append(
+            math.sqrt(np.mean((y_fold - y[train_idx].mean()) ** 2)))
+        for name in competitors:
+            pred = clone(MODELS[name]).fit(x[train_idx], y[train_idx]).predict(x[test_idx])
+            fold_rmse[name].append(math.sqrt(np.mean((y_fold - pred) ** 2)))
+
+    cv = pd.DataFrame({
+        "model": list(fold_rmse),
+        "cv_rmse": [np.mean(v) for v in fold_rmse.values()],
+        "cv_rmse_se": [np.std(v) / math.sqrt(len(v)) for v in fold_rmse.values()],
+    }).sort_values("cv_rmse")
+    cv.round(4).to_csv(out / "lr22_competing_models_cv.csv", index=False)
+
+    print("\nCompeting models, repeated 10-fold cross-validation (30 repeats)")
+    for _, r in cv.iterrows():
+        print(f"  {r.model:<36}{r.cv_rmse:>8.3f}  (se {r.cv_rmse_se:.3f})")
+    print("\nwritten: results/lr22_eda_correlations.csv, results/lr22_competing_models.csv, "
+          "results/lr22_competing_models_cv.csv")
 
 
 if __name__ == "__main__":

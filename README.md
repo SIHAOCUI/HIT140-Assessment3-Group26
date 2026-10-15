@@ -58,7 +58,9 @@ source results.
 
 ```bash
 python src/evaluate_week9.py        # Week 9 hold-out metrics for both models
-python src/compare_models_lr22.py   # LR2.2 correlations and competing algorithms
+python src/compare_models_lr22.py   # LR2.2 correlations; competing algorithms on the hold-out
+                                    # and under repeated 10-fold cross-validation
+python src/log_transform_check.py   # why rank and squad value are logged (Week 9 tip #1)
 python src/make_report_figures.py   # report Figures 3 and 4
 ```
 
