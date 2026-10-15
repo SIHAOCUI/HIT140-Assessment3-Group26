@@ -24,7 +24,7 @@ import numpy as np
 import pandas as pd
 
 HERE = Path(__file__).resolve().parent
-RAW = HERE / "raw"
+RAW = HERE.parent / "data" / "raw"
 
 # ----- shrinkage priors for in-tournament form (few games per team => raw averages are noisy)
 K = 2.0                 # pseudo-games of prior
@@ -157,7 +157,7 @@ CONCEPT = {
 
 def main():
     m, t = build()
-    out = HERE
+    out = HERE.parent / "data"
     m.to_csv(out / "candidate_features_match_level.csv", index=False)
     t.to_csv(out / "candidate_features_team_match.csv", index=False)
 
